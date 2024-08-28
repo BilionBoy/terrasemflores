@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Terrasemflores</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body style="background-color: #fff; margin: 0; padding: 0;">
+    <div class="container-fluid" style="margin: 0; padding: 0;">
+      <div class="row" style="margin: 0; padding: 0;">
+        <div class="col-3" style="padding: 0;">
+          <nav class="navbar navbar-light" style="background-color: #fff; box-shadow: none; border: none; padding: 0;">
+            <div style="margin-top: 20px; padding-left: 10px;">
+              <div style="font-family: Arial, sans-serif; font-size: 12px; color: #333; text-transform: uppercase; letter-spacing: 0.5px; text-align: center;">
+                <p style="margin: 0; line-height: 1.2; font-weight: normal;">
+                  terra<br>
+                  sem<br>
+                  flores
+                </p>
+              </div>
+              <ul class="nav flex-column" style="list-style-type: none; padding: 0; margin: 0;">
+                <li class="nav-item" style="margin: 0;">
+                  <%= link_to 'home', root_path, class: 'nav-link', style: 'color: #333; text-decoration: none; display: block; padding: 10px 15px; font-size: 13px;' %>
+                </li>
+                <li class="nav-item" style="margin: 0;">
+                  <%= link_to 'sobre', about_path, class: 'nav-link', style: 'color: #333; text-decoration: none; display: block; padding: 10px 15px; font-size: 13px;' %>
+                </li>
+                <li class="nav-item" style="margin: 0;">
+                  <%= link_to 'arquivos', archive_path, class: 'nav-link', style: 'color: #333; text-decoration: none; display: block; padding: 10px 15px; font-size: 13px;' %>
+                </li>
+                <li class="nav-item" style="margin: 0;">
+                  <%= link_to 'contato', questions_path, class: 'nav-link', style: 'color: #333; text-decoration: none; display: block; padding: 10px 15px; font-size: 13px;' %>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+        <div class="col-9" style="padding: 20px;">
+          <%= yield %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

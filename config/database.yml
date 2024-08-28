@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: karencristina
+  password: hauntmex3
+
+development:
+  <<: *default
+  database: terrasemflores_development
+
+test:
+  <<: *default
+  database: terrasemflores_test
+
+production:
+  <<: *default
+  database: terrasemflores_production

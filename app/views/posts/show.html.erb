@@ -1,0 +1,56 @@
+<!-- app/views/posts/show.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= @post.title %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body style="background-color: #fff; margin: 0; padding: 0;">
+    <div class="container-fluid" style="margin: 0; padding: 0;">
+      <div class="row" style="margin: 0; padding: 0;">
+        <div class="col-3" style="padding: 0;">
+          <!-- Sidebar aqui -->
+        </div>
+        <div class="col-9" style="padding: 20px;">
+          <!-- Visualização do Post -->
+          <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
+            <% if @post.images.attached? %>
+              <% @post.images.each do |image| %>
+                <%= image_tag image, style: 'width: 100%; height: auto; margin-bottom: 20px;' %>
+              <% end %>
+            <% end %>
+            <p><%= @post.body %></p>
+          </div>
+
+          <!-- Seção de Comentários -->
+          <div style="margin-top: 40px;">
+            <h3 style="font-size: 18px; color: #333;">Comentários</h3>
+            <!-- Formulário de Comentários -->
+            <%= form_with(model: [ @post, @post.comments.build ], local: true) do |form| %>
+              <div class="form-group">
+                <%= form.label :body, "Adicionar um comentário" %>
+                <%= form.text_area :body, class: 'form-control', rows: 4 %>
+              </div>
+              <div class="form-group">
+                <%= form.submit "Enviar", class: 'btn btn-primary' %>
+              </div>
+            <% end %>
+
+            <!-- Lista de Comentários -->
+            <ul style="list-style-type: none; padding: 0;">
+              <% @post.comments.each do |comment| %>
+                <li style="margin-bottom: 20px; padding: 10px; border-bottom: 1px solid #ddd;">
+                  <p style="margin: 0;"><strong><%= comment.user_name %>:</strong></p>
+                  <p><%= comment.body %></p>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

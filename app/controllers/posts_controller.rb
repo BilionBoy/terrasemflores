@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_post, only: %i[show edit update destroy create_comment]
 
   def index
     @posts = Post.all
   end
 
   def show
-    @post = Post.find(params[:id])
     @comment = @post.comments.build
   end
 
@@ -39,12 +38,27 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post was successfully destroyed.'
   end
 
+  def create_comment
+    @comment = @post.comments.build(comment_params)
+    if @comment.save
+      redirect_to @post, notice: 'Comment was successfully created.'
+    else
+      redirect_to @post, alert: 'Error creating comment.'
+    end
+  end
+
   private
 
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find(params[:post_id] || params[:id])
   end
 
   def post_params
-    params.require(:post).permit(:title, :body, :published_at, images: [])  end
+    params.require(:post).permit(:title, :body, :published_at, :audio_url, images: [])
+  end
+  
+
+  def comment_params
+    params.require(:comment).permit(:body, :user_name)
+  end
 end

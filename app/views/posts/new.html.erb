@@ -1,9 +1,62 @@
-<h1>New post</h1>
+<!-- app/views/posts/new.html.erb -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Criar Novo Post</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body style="background-color: #fff; margin: 0; padding: 0;">
+    <div class="container-fluid" style="margin: 0; padding: 0;">
+      <div class="row" style="margin: 0; padding: 0;">
+        <div class="col-12" style="padding: 20px;">
+          <h1>Criar Novo Post</h1>
 
-<%= render "form", post: @post %>
+          <%= form_with(model: @post, local: true, html: { multipart: true }) do |form| %>
+            <% if @post.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+                <ul>
+                  <% @post.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
 
-<br>
+            <div class="field">
+              <%= form.label :title %>
+              <%= form.text_field :title %>
+            </div>
 
-<div>
-  <%= link_to "Back to posts", posts_path %>
-</div>
+            <div class="field">
+              <%= form.label :body %>
+              <%= form.text_area :body %>
+            </div>
+
+            <div class="field">
+              <%= form.label :published_at %>
+              <%= form.datetime_select :published_at %>
+            </div>
+
+            <div class="field">
+              <%= form.label :images, "Images" %>
+              <%= form.file_field :images, multiple: true %>
+            </div>
+
+            <div class="field">
+              <%= form.label :audio_url, "Audio URL" %>
+              <%= form.text_field :audio_url, class: 'form-control' %>
+            </div>
+
+            <div class="actions">
+              <%= form.submit "Criar Post" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

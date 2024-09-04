@@ -3,8 +3,10 @@ Rails.application.routes.draw do
     post 'comments', to: 'posts#create_comment', as: 'create_comment'
   end
 
+  # Definindo a rota raiz para o post específico
+  root to: redirect('/posts/1')
 
-  root 'pages#home'
+  # Outras rotas
   get 'about', to: 'pages#about'
   get 'archive', to: 'pages#archive'
   get 'questions', to: 'pages#questions'

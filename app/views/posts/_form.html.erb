@@ -1,42 +1,42 @@
-<%= form_with(model: post, local: true) do |form| %>
-  <% if post.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+<%= form_with(model: @post, local: true) do |form| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation" style="margin-bottom: 20px;">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
 
       <ul>
-        <% post.errors.full_messages.each do |message| %>
+        <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field" style="margin-bottom: 20px;">
     <%= form.label :title %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class: 'form-control', style: 'width: 100%;' %>
   </div>
 
-  <div class="field">
+  <div class="field" style="margin-bottom: 20px;">
     <%= form.label :body %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class: 'form-control', rows: 4, style: 'width: 100%;' %>
   </div>
 
-  <div class="field">
+  <div class="field" style="margin-bottom: 20px;">
     <%= form.label :published_at %>
     <%= form.datetime_select :published_at %>
   </div>
 
-  <div class="field">
-    <%= form.label :images, "Images" %>
-    <%= form.file_field :images, multiple: true %>
+  <div class="field" style="margin-bottom: 20px;">
+    <%= form.label :images, "Imagens" %>
+    <%= form.file_field :images, multiple: true, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :audio_url, "Audio URL" %>
+  <div class="field" style="margin-bottom: 20px;">
+    <%= form.label :audio_url, "URL do Áudio" %>
     <%= form.text_field :audio_url, class: 'form-control' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Salvar', class: 'btn btn-primary' %>
   </div>
 <% end %>

@@ -1,71 +1,59 @@
 <!-- app/views/posts/show.html.erb -->
-<!DOCTYPE html>
-<html>
-  <head>
-    <title><%= @post.title %></title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_importmap_tags %>
-  </head>
-  <body style="background-color: #fff; margin: 0; padding: 0;">
-    <div class="container-fluid" style="margin: 0; padding: 0;">
-      <div class="row" style="margin: 0; padding: 0;">
-        <div class="col-3" style="padding: 0;">
-          <!-- Sidebar aqui -->
-        </div>
-        <div class="col-9" style="padding: 20px;">
-          <!-- Visualização do Post -->
-          <div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6;">
-            <% if @post.images.attached? %>
-              <% @post.images.each do |image| %>
-                <%= image_tag image, style: 'width: 100%; height: auto; margin-bottom: 20px;' %>
-              <% end %>
-            <% end %>
-            <p><%= @post.body %></p>
+<div style="font-family: Arial, sans-serif; color: #333; line-height: 1.6; margin: 20px auto; max-width: 800px;">
 
-            <!-- Player de Áudio -->
-            <% if @post.audio_url.present? %>
-              <div style="margin-top: 20px;">
-                <audio controls style="width: 100%;">
-                  <source src="<%= @post.audio_url %>" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
-              </div>
-            <% end %>
-          </div>
+  <!-- Título do Post -->
+  <h1 style="font-size: 24px; font-weight: bold; margin-bottom: 20px;"><%= @post.title %></h1>
 
-          <!-- Seção de Comentários -->
-          <div style="margin-top: 40px;">
-            <h3 style="font-size: 18px; color: #333;">Comentários</h3>
-            <%= form_with(model: [ @post, @post.comments.build ], url: post_create_comment_path(@post), method: :post, local: true) do |form| %>
-              <div class="field">
-                <%= form.label :body, "Escreva seu comentário" %>
-                <%= form.text_area :body, class: 'form-control', rows: 4 %>
-              </div>
+  <!-- Corpo do Post - Texto Inicial -->
+  <p style="font-size: 16px; margin-bottom: 20px;"><%= @post.body %></p>
 
-              <div class="field">
-                <%= form.label :user_name, "Digite seu nome" %>
-                <%= form.text_field :user_name, class: 'form-control' %>
-              </div>
+  <!-- Imagens do Post -->
+  <% if @post.images.attached? %>
+    <% @post.images.each do |image| %>
+      <%= image_tag image, style: 'width: 100%; height: auto; margin-bottom: 20px;' %>
+    <% end %>
+  <% end %>
 
-              <div class="actions">
-                <%= form.submit "Enviar", class: 'btn btn-primary' %>
-              </div>
-            <% end %>
+  <!-- Continuação do Texto -->
+  <p style="font-size: 16px; margin-bottom: 20px;"><%= @post.body %></p>
 
-            <!-- Lista de Comentários -->
-            <ul style="list-style-type: none; padding: 0;">
-              <% @post.comments.each do |comment| %>
-                <li style="margin-bottom: 20px; padding: 10px; border-bottom: 1px solid #ddd;">
-                  <p style="margin: 0;"><strong><%= comment.user_name %>:</strong></p>
-                  <p><%= comment.body %></p>
-                </li>
-              <% end %>
-            </ul>
-          </div>
-        </div>
-      </div>
+  <!-- Player de Áudio -->
+  <% if @post.audio_url.present? %>
+    <div style="margin-top: 20px;">
+      <audio controls style="width: 100%;">
+        <source src="<%= @post.audio_url %>" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
     </div>
-  </body>
-</html>
+  <% end %>
+
+  <!-- Seção de Comentários -->
+  <div style="margin-top: 40px;">
+    <h3 style="font-size: 18px; color: #333;">Comentários</h3>
+    <%= form_with(model: [ @post, @post.comments.build ], url: post_create_comment_path(@post), method: :post, local: true) do |form| %>
+      <div class="field" style="margin-bottom: 20px;">
+        <%= form.label :body, "Escreva seu comentário" %>
+        <%= form.text_area :body, class: 'form-control', rows: 4, style: 'width: 100%; margin-bottom: 10px;' %>
+      </div>
+
+      <div class="field" style="margin-bottom: 20px;">
+        <%= form.label :user_name, "Digite seu nome" %>
+        <%= form.text_field :user_name, class: 'form-control', style: 'width: 100%; margin-bottom: 10px;' %>
+      </div>
+
+      <div class="actions">
+        <%= form.submit "Enviar", class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <!-- Lista de Comentários -->
+    <ul style="list-style-type: none; padding: 0;">
+      <% @post.comments.each do |comment| %>
+        <li style="margin-bottom: 20px; padding: 10px; border-bottom: 1px solid #ddd;">
+          <p style="margin: 0;"><strong><%= comment.user_name %>:</strong></p>
+          <p><%= comment.body %></p>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

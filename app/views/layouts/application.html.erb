@@ -8,13 +8,13 @@
     <%= javascript_importmap_tags %>
     <%= favicon_link_tag 'favicon.ico' %>
   </head>
-  <body style="background-color: #fff; margin: 0; padding: 0;">
-    <div class="container-fluid">
+  <body class="bg-white">
+    <div class="container-fluid margin-top: 30px;">
       <div class="row">
-        <div class="col-2 col-lg-1">
+        <div class="col-2 col-lg-1 ">
           <%= render 'shared/sidebar' %>
         </div>
-        <main class="col-10 col-lg-5">
+        <main class="col-8 col-lg-5 ">
           <%= yield %>
         </main>
       </div>

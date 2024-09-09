@@ -1,8 +1,7 @@
-<%= form_with(model: @post, local: true) do |form| %>
+<%= form_with(model: @post, local: true, html: { class: 'form-container' }) do |form| %>
   <% if @post.errors.any? %>
-    <div id="error_explanation" style="margin-bottom: 20px;">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
+    <div id="error_explanation" class="alert alert-danger">
+      <h2><%= pluralize(@post.errors.count, "error") %> proibiu que este post fosse salvo:</h2>
       <ul>
         <% @post.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,32 +10,41 @@
     </div>
   <% end %>
 
-  <div class="field" style="margin-bottom: 20px;">
-    <%= form.label :title %>
-    <%= form.text_field :title, class: 'form-control', style: 'width: 100%;' %>
+  <div class="form-group">
+    <%= form.label :title, class: 'form-label' %>
+    <%= form.text_field :title, class: 'form-control' %>
   </div>
 
-  <div class="field" style="margin-bottom: 20px;">
-    <%= form.label :body %>
-    <%= form.text_area :body, class: 'form-control', rows: 4, style: 'width: 100%;' %>
+  <div class="form-group">
+    <%= form.label :body, class: 'form-label' %>
+    <%= form.text_area :body, class: 'form-control' %>
   </div>
 
-  <div class="field" style="margin-bottom: 20px;">
-    <%= form.label :published_at %>
-    <%= form.datetime_select :published_at %>
+  <div class="form-group">
+    <%= form.label :published_at, class: 'form-label' %>
+    <%= form.datetime_select :published_at, class: 'form-control' %>
   </div>
 
-  <div class="field" style="margin-bottom: 20px;">
-    <%= form.label :images, "Imagens" %>
-    <%= form.file_field :images, multiple: true, class: 'form-control' %>
-  </div>
-
-  <div class="field" style="margin-bottom: 20px;">
-    <%= form.label :audio_url, "URL do Áudio" %>
+  <div class="form-group">
+    <%= form.label :audio_url, class: 'form-label' %>
     <%= form.text_field :audio_url, class: 'form-control' %>
   </div>
 
-  <div class="actions">
+  <div class="form-group">
+    <%= form.label :images, 'Imagens', class: 'form-label' %>
+    <%= form.file_field :images, multiple: true, class: 'form-control-file' %>
+    <% if @post.images.attached? %>
+      <div class="image-preview mt-2">
+        <% @post.images.each do |image| %>
+          <%= image_tag(image, size: '100x100', class: 'img-thumbnail') %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="form-actions">
     <%= form.submit 'Salvar', class: 'btn btn-primary' %>
   </div>
 <% end %>
+
+<%= link_to 'Voltar', admin_path, class: 'btn btn-secondary mt-3' %>

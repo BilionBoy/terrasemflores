@@ -1,29 +1,32 @@
 <div class="container mt-5">
-  <% @posts.each do |post| %>
-    <div class="post" style="margin-bottom: 40px; padding: 20px; background-color: #fff; border-radius: 8px; font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; font-weight: 400; line-height: 1.5em; text-transform: lowercase;">
-      <!-- Data -->
-      <p class="date" style="font-size: 12px; color: #888; margin-bottom: 15px; font-family: 'Helvetica', 'Arial', sans-serif; font-weight: 400; line-height: 0.1em;">
-        <%= post.created_at.strftime("%d %b %Y") %>
-      </p>
-      
-      <!-- Texto do Post -->
-      <p style="font-family: 'Helvetica', 'Arial', sans-serif; font-size: 14px; line-height: 0.1em; color: #333; margin: 0 0 1em; text-transform: lowercase;">
-        <%= simple_format(post.body) %>
-      </p>
-      
-      <!-- Imagens -->
-      <% if post.images.attached? %>
-        <% post.images.each do |image| %>
-          <%= image_tag image, class: 'img-fluid mb-3' %>
+  <% if @posts.present? %>
+    <% @posts.each do |post| %>
+      <div class="post mb-4 p-3 bg-white rounded shadow-sm">
+        <p class="date text-muted mb-3">
+          <%= post.created_at.strftime("%d %b %Y") %>
+        </p>
+        <p class="text-dark mb-2">
+          <%= simple_format(post.body) %>
+        </p>
+        <% if post.images.attached? %>
+          <div class="post-images">
+            <% post.images.each do |image| %>
+              <%= image_tag image, class: 'img-fluid mb-3' %>
+            <% end %>
+          </div>
         <% end %>
-      <% end %>
-      
-      <!-- Áudio -->
-      <% if post.audio_url.present? %>
-        <audio controls style="width: 100%; margin-bottom: 20px;">
-          <source src="<%= post.audio_url %>" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
+        <% if post.audio_url.present? %>
+          <audio controls class="w-100 mb-3">
+            <source src="<%= post.audio_url %>" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+          </audio>
+        <% end %>
+      </div>
+    <% end %>
+    <!-- Botão de mais postagens -->
+    <div class="text-center mt-4">
+      <% if @posts.next_page %>
+        <%= link_to 'Mais Postagens', posts_path(page: @posts.next_page), class: 'btn btn-dark' %>
       <% end %>
     </div>
   <% end %>

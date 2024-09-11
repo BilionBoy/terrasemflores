@@ -1,0 +1,319 @@
+/* Estilos gerais */
+body {
+    font-family: 'Helvetica', 'Arial', sans-serif;
+    color: #333;
+    background-color: #f8f9fa;
+}
+
+.container {
+    max-width: 850px;
+    margin-top: 5rem;
+    /* Espaço superior para o container */
+}
+
+/* Estilos para a página de boas-vindas */
+.welcome-page {
+    background-color: #f8f9fa;
+    text-align: center;
+    padding: 20px;
+}
+
+.welcome-content {
+    padding: 20px;
+}
+
+.welcome-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.welcome-description {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Estilos para a página de arquivos */
+.archive-page {
+    background-color: #f8f9fa;
+    padding-top: 40px;
+}
+
+/* Estilos específicos para os cartões na página de arquivos */
+.archive-page .archive-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 20px;
+    height: 300px;
+    /* Define a altura fixa para todos os cartões */
+    border: none;
+    /* Remove a borda padrão */
+    background-color: #fff;
+    /* Garante que o fundo do cartão seja branco */
+    border-radius: 8px;
+    /* Adiciona bordas arredondadas */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Adiciona sombra */
+}
+
+/* Ajusta a altura das imagens para se encaixar dentro do cartão */
+.archive-page .card-img-top {
+    width: 100%;
+    height: 150px;
+    /* Define a altura fixa para as imagens */
+    object-fit: cover;
+    /* Faz com que a imagem cubra o espaço disponível sem distorção */
+    margin-bottom: 10px;
+    /* Adiciona espaçamento inferior às imagens */
+}
+
+/* Ajusta o corpo do cartão para preencher o espaço restante */
+.archive-page .card-body {
+    padding: 0.5rem;
+    flex-grow: 1;
+    /* Faz com que o corpo do cartão ocupe o espaço restante */
+}
+
+/* Ajusta o texto do cartão */
+.archive-page .card-text {
+    font-size: 0.875rem;
+    margin-bottom: 0;
+}
+
+/* Estilos para a mensagem quando não há posts */
+.archive-page .no-posts {
+    font-size: 1rem;
+    color: #333;
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+}
+
+
+
+.form-textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+}
+
+.form-input {
+    max-width: 300px;
+}
+
+.form-textarea {
+    margin-bottom: 10px;
+}
+
+.form-button {
+    background-color: black;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+}
+
+
+/* Estilos gerais */
+.form-group {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #e0e0e0, #ffffff);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+}
+
+.post {
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    font-size: 14px;
+    line-height: 1.5em;
+    text-transform: lowercase;
+}
+
+.date {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.post-body {
+    font-size: 14px;
+    color: #333;
+    margin: 0 0 1em;
+}
+
+.audio-player {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+/* Estilos para os posts na página de índice */
+.post {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.post .date {
+    font-size: 0.875rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.post .text-dark {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Estilos para as imagens dos posts */
+.post-images {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* Espaçamento entre as imagens */
+}
+
+.post-image {
+    width: 100%;
+    /* Ocupa toda a largura disponível quando é a única imagem */
+    height: auto;
+    object-fit: cover;
+    border-radius: 4px;
+    /* Borda arredondada opcional */
+}
+
+/* Ajuste para duas imagens */
+.post-images .post-image:nth-child(2n) {
+    width: calc(50% - 0.5rem);
+    /* Ajusta a largura das imagens para duas por linha */
+}
+
+.post-images .post-image:nth-child(2n+1) {
+    width: calc(50% - 0.5rem);
+    /* Ajusta a largura das imagens para duas por linha */
+}
+
+/* Ajuste para a situação com uma única imagem */
+.post-images>.post-image:first-child {
+    width: 100%;
+    /* Garante que a primeira imagem ocupe toda a largura se for a única imagem */
+}
+
+/* Estilos para vídeos dos posts */
+.post-videos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    /* Espaçamento entre os vídeos */
+}
+
+/* Estilos gerais para vídeos */
+.post-video {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    background-color: #000;
+    /* Cor de fundo preta para vídeos */
+}
+
+/* Ajuste para vídeos quando há mais de um */
+.post-videos .post-video:nth-child(2n) {
+    width: calc(50% - 0.5rem);
+    /* Ajusta a largura dos vídeos para dois por linha */
+}
+
+.post-videos .post-video:nth-child(2n+1) {
+    width: calc(50% - 0.5rem);
+    /* Ajusta a largura dos vídeos para dois por linha */
+}
+
+/* Ajuste para a situação com um único vídeo */
+.post-videos>.post-video:first-child {
+    width: 100%;
+    /* Garante que o primeiro vídeo ocupe toda a largura se for o único vídeo */
+}
+
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-control {
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.btn {
+    display: block;
+    width: 100%;
+}
+
+.question-form {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.question-form .form-control {
+    width: 100%;
+    max-width: 300px;
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.question-form .btn-dark {
+    background-color: black;
+    color: white;
+}
+
+.recent-questions {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+/* app/assets/stylesheets/posts.css */
+.pagination {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.pagination a {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.pagination a:hover {
+    background-color: #0056b3;
+}
+
+.btn-outline-primary {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.btn-outline-primary:hover {
+    background-color: #007bff;
+    color: #fff;
+}

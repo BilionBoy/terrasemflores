@@ -1,0 +1,22 @@
+<div class="container mt-5">
+  <div class="post">
+    <p class="date">
+      <%= @post.created_at.strftime("%d %b %Y") %>
+    </p>
+    <p class="post-body">
+      <%= simple_format(@post.body) %>
+    </p>
+    <% if @post.images.attached? %>
+      <% @post.images.each do |image| %>
+        <%= image_tag image, class: 'img-fluid mb-3' %>
+      <% end %>
+    <% end %>
+    <% if @post.audio_url.present? %>
+      <audio controls class="audio-player">
+        <source src="<%= @post.audio_url %>" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+    <% end %>
+  </div>
+  <%= link_to 'Voltar', posts_path, class: 'btn btn-secondary mt-3' %>
+</div>

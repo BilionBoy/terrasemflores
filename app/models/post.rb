@@ -4,5 +4,7 @@ class Post < ApplicationRecord
   validates :published_at, presence: true
   
   has_many_attached :images
-  has_many :comments, dependent: :destroy
+  # Remove esta linha
+  # has_many :comments, dependent: :destroy
+  has_many_attached :videos
 end

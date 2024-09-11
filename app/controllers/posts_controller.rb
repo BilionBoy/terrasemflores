@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy create_comment clear_audio remove_image]
+  before_action :set_post, only: %i[show edit update destroy clear_audio remove_image]
 
   def index
-    @posts = Post.all
+    @posts = Post.page(params[:page]).per(4)  # Exibe 4 postagens por página
   end
 
   def show
-    @comment = @post.comments.build
+    @post = Post.find(params[:id])
   end
 
   def new
@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to @post, notice: 'Post criado com sucesso.'
     else
+      logger.debug "Erro ao salvar o post: #{@post.errors.full_messages.join(', ')}"
       render :new
     end
   end
@@ -37,14 +38,15 @@ class PostsController < ApplicationController
     redirect_to posts_url, notice: 'Post destruído com sucesso.'
   end
 
-  def create_comment
-    @comment = @post.comments.build(comment_params)
-    if @comment.save
-      redirect_to @post, notice: 'Comentário criado com sucesso.'
-    else
-      redirect_to @post, alert: 'Erro ao criar comentário.'
-    end
-  end
+  # Remova este método
+  # def create_comment
+  #   @comment = @post.comments.build(comment_params)
+  #   if @comment.save
+  #     redirect_to @post, notice: 'Comentário criado com sucesso.'
+  #   else
+  #     redirect_to @post, alert: 'Erro ao criar comentário.'
+  #   end
+  # end
 
   def clear_audio
     @post.audio_url = nil
@@ -66,7 +68,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def admin
+  def hauntmex3
     @posts = Post.all
   end
 
@@ -74,14 +76,16 @@ class PostsController < ApplicationController
 
   def set_post
     @post = Post.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to posts_url, alert: 'Post não encontrado.'
   end
 
   def post_params
-    # Removendo :title pois você não quer mais usá-lo
-    params.require(:post).permit(:body, :published_at, :audio_url, images: [])
+    params.require(:post).permit(:title, :body, :published_at, :audio_url, images: [])
   end
 
-  def comment_params
-    params.require(:comment).permit(:body, :user_name)
-  end
+  # Remova os parâmetros de comentário
+  # def comment_params
+  #   params.require(:comment).permit(:body, :user_name)
+  # end
 end

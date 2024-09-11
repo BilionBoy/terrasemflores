@@ -4,6 +4,13 @@ ruby "3.3.0"
 gem "cssbundling-rails"
 gem "bootstrap", '~> 5.3.3'
 gem 'simple_form'
+gem 'aws-sdk-s3', require: false
+# Gemfile
+gem 'kaminari'
+#gem 'devise'
+# Gemfile
+gem 'dotenv-rails', groups: [:development, :test]
+
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.1.4"

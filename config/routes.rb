@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#index'
 
-  get 'admin', to: 'posts#admin'
+  get 'hauntmex3', to: 'posts#hauntmex3'
   get 'about', to: 'pages#about'
   get 'archive', to: 'pages#archive'
   get 'questions', to: 'pages#questions'
@@ -11,4 +11,6 @@ Rails.application.routes.draw do
     patch 'clear_audio', on: :member
     delete 'remove_image/:index', to: 'posts#remove_image', as: 'remove_image', on: :member
   end
+
+  resources :contacts, only: [:index, :create]
 end

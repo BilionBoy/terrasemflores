@@ -15,5 +15,5 @@ test:
   database: terrasemflores_test
 
 production:
-  <<: *default
-  database: terrasemflores_production
+  <<: *default 
+  url: <%= ENV['DATABASE_URL'] %>

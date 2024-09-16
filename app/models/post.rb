@@ -1,12 +1,8 @@
 class Post < ApplicationRecord
   # Validações
-  validates :body, presence: true
+  validates :body, presence: true  # Somente o campo body é obrigatório
 
-  # Se você tiver outras validações, adicione-as aqui
-  # valids :title, :images, :audios, :videos, presence: false
-
-  # Validações adicionais, se necessário
-  # validates :title, :images, :audios, :videos, presence: false
-
-  # Adicione suas associações e métodos aqui, se houver
+  # Associações
+  has_many_attached :images
+  has_many_attached :videos
 end

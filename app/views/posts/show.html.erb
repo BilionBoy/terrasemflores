@@ -1,22 +1,40 @@
-<div class="container mt-5">
-  <div class="post">
-    <p class="date">
-      <%= @post.created_at.strftime("%d %b %Y") %>
-    </p>
-    <p class="post-body">
-      <%= simple_format(@post.body) %>
-    </p>
-    <% if @post.images.attached? %>
-      <% @post.images.each do |image| %>
-        <%= image_tag image, class: 'img-fluid mb-3' %>
-      <% end %>
-    <% end %>
-    <% if @post.audio_url.present? %>
-      <audio controls class="audio-player">
-        <source src="<%= @post.audio_url %>" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-      </audio>
-    <% end %>
-  </div>
-  <%= link_to 'Voltar', posts_path, class: 'btn btn-secondary mt-3' %>
-</div>
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sobre</title>
+    <!-- Importando o CSS do Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+  </head>
+  <body style="font-family: 'Helvetica', 'Arial', sans-serif; color: #333; background-color: #f8f9fa;">
+    <div class="container" style="max-width: 850px; margin-top: 2rem;">
+      <div class="post" style="background-color: #fff; border: none; box-shadow: none; padding: 0.5rem; font-family: 'Helvetica', 'Arial', sans-serif; line-height: 1.2; text-transform: lowercase; font-size: 0.8rem;">
+        <p class="date" style="font-size: 0.75rem; color: #888; margin-bottom: 0.5rem;">
+          <%= @post.created_at.strftime("%d %b %Y") %>
+        </p>
+        <p class="post-body" style="font-size: 0.8rem; color: #333; margin: 0 0 1em;">
+          <%= simple_format(@post.body) %>
+        </p>
+        <% if @post.images.attached? %>
+          <div class="post-images" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <% @post.images.each_with_index do |image, index| %>
+              <%= image_tag image, style: "width: #{@post.images.size == 1 ? '100%' : '48%'}; height: auto; margin-bottom: 1rem;" %>
+            <% end %>
+          </div>
+        <% end %>
+        <% if @post.audio_url.present? %>
+          <audio controls style="width: 100%; margin-bottom: 1rem;">
+            <source src="<%= @post.audio_url %>" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+          </audio>
+        <% end %>
+      </div>
+      <div class="text-center" style="margin-top: 1rem;">
+        <%= link_to 'Voltar', posts_path, style: "background-color: #6c757d; color: #fff; padding: 10px 15px; border: none; cursor: pointer; text-decoration: none;" %>
+      </div>
+    </div>
+    <!-- Importando o JavaScript do Bootstrap -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

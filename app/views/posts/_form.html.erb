@@ -9,30 +9,55 @@
       </ul>
     </div>
   <% end %>
+  
   <div class="form-group mb-3">
     <%= form.label :title, class: 'form-label' %>
     <%= form.text_field :title, class: 'form-control' %>
   </div>
+  
   <div class="form-group mb-3">
     <%= form.label :body, class: 'form-label' %>
     <%= form.text_area :body, class: 'form-control', rows: 8 %>
   </div>
+  
   <div class="form-group mb-3">
     <%= form.label :published_at, class: 'form-label' %>
     <%= form.datetime_select :published_at, class: 'form-control' %>
   </div>
+  
   <div class="form-group mb-3">
     <%= form.label :audio_url, class: 'form-label' %>
     <%= form.text_field :audio_url, class: 'form-control' %>
   </div>
+  
+  <!-- Mostrar as imagens já anexadas -->
+  <% if @post.images.attached? %>
+    <div class="form-group mb-3">
+      <h3>Imagens Anexadas</h3>
+      <div class="post-images" style="display: flex; gap: 1rem;">
+        <% @post.images.each do |image| %>
+          <div style="position: relative;">
+            <%= image_tag image, style: "max-width: 200px; height: auto;" %>
+            <!-- Checkbox para remover a imagem -->
+            <label>
+              <%= check_box_tag "post[remove_images][]", image.id %> Remover
+            </label>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  
   <div class="form-group mb-3">
-    <%= form.label :images, 'Imagens', class: 'form-label' %>
+    <%= form.label :images, 'Adicionar Imagens', class: 'form-label' %>
     <%= form.file_field :images, multiple: true, class: 'form-control' %>
   </div>
+  
   <div class="form-group mb-3">
-    <%= form.label :videos, 'Vídeos', class: 'form-label' %>
+    <%= form.label :videos, 'Adicionar Vídeos', class: 'form-label' %>
     <%= form.file_field :videos, multiple: true, class: 'form-control' %>
   </div>
+  
   <div class="actions">
     <button type="submit" class="btn btn-dark">Salvar Post</button>
   </div>

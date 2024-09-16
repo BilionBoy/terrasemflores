@@ -1,22 +1,22 @@
-<div class="container mt-5">
+<div class="container" style="max-width: 850px; margin-top: 2rem;">
   <% if @posts.present? %>
     <% @posts.each do |post| %>
-      <div class="post mb-4 p-3 bg-white ">
-        <p class="date text-muted mb-3">
+      <div class="post" style="background-color: #fff; border: none; box-shadow: none; padding: 0.5rem; font-family: 'Helvetica', 'Arial', sans-serif; line-height: 1.2; text-transform: lowercase; font-size: 0.8rem;">
+        <p class="date" style="font-size: 0.875rem; color: #888; margin-bottom: 0.5rem;">
           <%= post.created_at.strftime("%d %b %Y") %>
         </p>
-        <p class="text-dark mb-2">
+        <p class="post-body" style="font-size: 0.875rem; color: #333; margin: 0 0 1em;">
           <%= simple_format(post.body) %>
         </p>
         <% if post.images.attached? %>
-          <div class="post-images">
-            <% post.images.each do |image| %>
-              <%= image_tag image, class: 'img-fluid mb-3' %>
+          <div class="post-images" style="display: flex; flex-wrap: wrap; gap: 1rem;">
+            <% post.images.each_with_index do |image, index| %>
+              <%= image_tag image, style: "width: #{post.images.size == 1 ? '100%' : '48%'}; height: auto; margin-bottom: 1rem;" %>
             <% end %>
           </div>
         <% end %>
         <% if post.audio_url.present? %>
-          <audio controls class="w-100 mb-3">
+          <audio controls style="width: 100%; margin-bottom: 1rem;">
             <source src="<%= post.audio_url %>" type="audio/mpeg">
             Seu navegador não suporta o elemento de áudio.
           </audio>
@@ -24,9 +24,9 @@
       </div>
     <% end %>
     <!-- Botão de mais postagens -->
-    <div class="text-center mt-4">
+    <div class="text-center" style="margin-top: 1rem;">
       <% if @posts.next_page %>
-        <%= link_to 'Mais Postagens', posts_path(page: @posts.next_page), class: 'btn btn-dark' %>
+        <%= link_to 'Mais Postagens', posts_path(page: @posts.next_page), style="background-color: #343a40; color: #fff; padding: 10px 15px; border: none; cursor: pointer; text-decoration: none;" %>
       <% end %>
     </div>
   <% end %>

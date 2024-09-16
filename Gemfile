@@ -4,7 +4,9 @@ ruby "3.3.0"
 gem "cssbundling-rails"
 gem "bootstrap", '~> 5.3.3'
 gem 'simple_form'
-gem 'aws-sdk-s3', require: false
+gem 'aws-sdk-s3'
+# Gemfile
+
 # Gemfile
 gem 'kaminari'
 #gem 'devise'

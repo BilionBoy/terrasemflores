@@ -1,13 +1,12 @@
 class Post < ApplicationRecord
   # Validações
-  validates :title, presence: true
   validates :body, presence: true
-  validates :published_at, presence: true
 
-  # Associações
-  # Remova ou comente esta linha:
-  # has_many :comments, dependent: :destroy
+  # Se você tiver outras validações, adicione-as aqui
+  # valids :title, :images, :audios, :videos, presence: false
 
-  has_many_attached :images
-  has_many_attached :videos
+  # Validações adicionais, se necessário
+  # validates :title, :images, :audios, :videos, presence: false
+
+  # Adicione suas associações e métodos aqui, se houver
 end

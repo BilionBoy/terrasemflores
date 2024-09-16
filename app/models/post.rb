@@ -1,10 +1,13 @@
 class Post < ApplicationRecord
+  # Validações
   validates :title, presence: true
   validates :body, presence: true
   validates :published_at, presence: true
 
+  # Associações
+  has_many :comments, dependent: :destroy
   has_many_attached :images
   has_many_attached :videos
-end
 
-# Remova o modelo comment.rb, pois não está mais em uso
+  # Outras funcionalidades e métodos, se necessário
+end

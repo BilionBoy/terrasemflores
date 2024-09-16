@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy clear_audio remove_image]
 
   def index
-    @posts = Post.page(params[:page]).per(4) # Exibe 4 postagens por página
+    @posts = Post.page(params[:page]).per(4)  # Exibe 4 postagens por página
   end
 
   def show

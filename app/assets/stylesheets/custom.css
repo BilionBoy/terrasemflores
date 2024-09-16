@@ -1,7 +1,6 @@
 /* Estilos gerais */
 @import 'custom';
 
-
 body {
     font-family: 'Helvetica', 'Arial', sans-serif;
     color: #333;
@@ -95,8 +94,6 @@ body {
     color: #888;
 }
 
-
-
 .form-textarea {
     width: 100%;
     padding: 8px;
@@ -119,7 +116,6 @@ body {
     border: none;
     cursor: pointer;
 }
-
 
 /* Estilos gerais */
 .form-group {
@@ -179,144 +175,14 @@ body {
 .post .date {
     font-size: 0.875rem;
     color: #888;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
 }
 
-.post .text-dark {
+.post .post-body {
     font-size: 1rem;
     color: #333;
-    margin-bottom: 1rem;
 }
 
-/* Estilos para as imagens dos posts */
-.post-images {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    /* Espaçamento entre as imagens */
-}
-
-.post-image {
-    width: 100%;
-    /* Ocupa toda a largura disponível quando é a única imagem */
-    height: auto;
-    object-fit: cover;
-    border-radius: 4px;
-    /* Borda arredondada opcional */
-}
-
-/* Ajuste para duas imagens */
-.post-images .post-image:nth-child(2n) {
-    width: calc(50% - 0.5rem);
-    /* Ajusta a largura das imagens para duas por linha */
-}
-
-.post-images .post-image:nth-child(2n+1) {
-    width: calc(50% - 0.5rem);
-    /* Ajusta a largura das imagens para duas por linha */
-}
-
-/* Ajuste para a situação com uma única imagem */
-.post-images>.post-image:first-child {
-    width: 100%;
-    /* Garante que a primeira imagem ocupe toda a largura se for a única imagem */
-}
-
-/* Estilos para vídeos dos posts */
-.post-videos {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    /* Espaçamento entre os vídeos */
-}
-
-/* Estilos gerais para vídeos */
-.post-video {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    background-color: #000;
-    /* Cor de fundo preta para vídeos */
-}
-
-/* Ajuste para vídeos quando há mais de um */
-.post-videos .post-video:nth-child(2n) {
-    width: calc(50% - 0.5rem);
-    /* Ajusta a largura dos vídeos para dois por linha */
-}
-
-.post-videos .post-video:nth-child(2n+1) {
-    width: calc(50% - 0.5rem);
-    /* Ajusta a largura dos vídeos para dois por linha */
-}
-
-/* Ajuste para a situação com um único vídeo */
-.post-videos>.post-video:first-child {
-    width: 100%;
-    /* Garante que o primeiro vídeo ocupe toda a largura se for o único vídeo */
-}
-
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-.form-control {
-    width: 100%;
-    padding: 0.5rem;
-}
-
-.btn {
-    display: block;
-    width: 100%;
-}
-
-.question-form {
-    font-size: 14px;
-    margin-bottom: 20px;
-}
-
-.question-form .form-control {
-    width: 100%;
-    max-width: 300px;
-    padding: 8px;
-    border: 1px solid #ccc;
-}
-
-.question-form .btn-dark {
-    background-color: black;
-    color: white;
-}
-
-.recent-questions {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-/* app/assets/stylesheets/posts.css */
-.pagination {
-    margin-top: 20px;
-    text-align: center;
-}
-
-.pagination a {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-}
-
-.pagination a:hover {
-    background-color: #0056b3;
-}
-
-.btn-outline-primary {
-    border-color: #007bff;
-    color: #007bff;
-}
-
-.btn-outline-primary:hover {
-    background-color: #007bff;
-    color: #fff;
+.post .audio-player {
+    margin-top: 1rem;
 }

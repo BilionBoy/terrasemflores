@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <% if @posts.present? %>
     <% @posts.each do |post| %>
-      <div class="post mb-4 p-3 bg-white rounded shadow-sm">
+      <div class="post mb-4 p-3 bg-white ">
         <p class="date text-muted mb-3">
           <%= post.created_at.strftime("%d %b %Y") %>
         </p>

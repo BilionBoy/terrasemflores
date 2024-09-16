@@ -1,9 +1,4 @@
 
-  <title>Admin - Posts</title>
-  <%= csrf_meta_tags %>
-  <%= csp_meta_tag %>
-  <%= stylesheet_link_tag "application", media: "all", "data-turbo-track": "reload" %>
-  <%= javascript_importmap_tags %>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -80,7 +75,6 @@
       color: #212529;
     }
   </style>
-<body>
   <div class="container">
     <h1>Admin - Posts</h1>
     <div class="post-list">
@@ -90,7 +84,7 @@
           <li>
             <strong>ID:</strong> <%= post.id %> - 
             <strong>Título:</strong> <%= post.title %> - 
-            <%= link_to 'Editar', edit_post_path(post), class: 'btn btn-success' %> |
+            <%= link_to 'Editar', edit_post_path(post), class: 'btn btn-dark' %> |
             <%= button_to 'Excluir', post_path(post), method: :delete, data: { confirm: 'Tem certeza?' }, class: 'btn btn-danger' %>
           </li>
         <% end %>
@@ -98,5 +92,3 @@
     </div>
     <%= link_to 'Novo Post', new_post_path, class: 'btn btn-dark' %>
   </div>
-</body>
-z

@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy clear_audio remove_image]
 
   def index
-    @posts = Post.page(params[:page]).per(4)  # Exibe 4 postagens por página
+    @posts = Post.page(params[:page]).per(4) # Exibe 4 postagens por página
   end
 
   def show
@@ -37,16 +37,6 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_url, notice: 'Post destruído com sucesso.'
   end
-
-  # Remova este método
-  # def create_comment
-  #   @comment = @post.comments.build(comment_params)
-  #   if @comment.save
-  #     redirect_to @post, notice: 'Comentário criado com sucesso.'
-  #   else
-  #     redirect_to @post, alert: 'Erro ao criar comentário.'
-  #   end
-  # end
 
   def clear_audio
     @post.audio_url = nil
@@ -83,9 +73,4 @@ class PostsController < ApplicationController
   def post_params
     params.require(:post).permit(:title, :body, :published_at, :audio_url, images: [])
   end
-
-  # Remova os parâmetros de comentário
-  # def comment_params
-  #   params.require(:comment).permit(:body, :user_name)
-  # end
 end

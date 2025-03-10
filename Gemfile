@@ -1,6 +1,6 @@
 source "https://rubygems.org"
 
-ruby "3.3.0"
+ruby "3.3.5"
 gem "cssbundling-rails"
 gem "bootstrap", '~> 5.3.3'
 gem 'simple_form'
